@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eye watching</title>
+    <link rel="stylesheet" href="eye.css">
+    <script type="text/javascript" src="../../body/tab.js"></script>
+    <script type="text/javascript" src="eye.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="box">
+        <!-- Eye -->
+        <div id="eye">
+            <div id="iris"></div>
+            <div id="eyelid"></div>
+        </div>
+    </div>
+    <div class="tabs">
+        <button onclick="clickTab('html')" class="tab active" id="tab-html">HTML</button>
+        <button onclick="clickTab('css')" class="tab" id="tab-css">CSS</button>
+        <button onclick="clickTab('js')" class="tab" id="tab-js">JS</button>
+    </div>
+    <span class="separator horizontal" id="separator-html"></span>
+    <span class="separator horizontal disable" id="separator-css"></span>
+    <span class="separator horizontal disable" id="separator-js"></span>
+    <div class="code-box">
+        <!-- Contenu du deuxième bloc -->
+        <h1 class="disable">Bloc de code</h1>
+        <p class="disable">Ceci est le contenu du deuxième bloc, avec du code HTML, CSS et JS :</p>
+        <code class="content" id="code-html">
+            <span class="attribute">&lt;div</span>&nbsp;class=<span class="value">"container"</span><span class="attribute">&gt;</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="attribute">&lt;div</span>&nbsp;class=<span class="value">"box"</span><span class="attribute">&gt;</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">&lt;!--&nbsp;Eye&nbsp;--&gt;</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="attribute">&lt;div</span>&nbsp;id=<span class="value">"eye"</span><span class="attribute">&gt;</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="attribute">&lt;div</span>&nbsp;id=<span class="value">"iris"</span><span class="attribute">&gt;</span><span class="attribute">&lt;/div&gt;</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="attribute">&lt;div</span>&nbsp;id=<span class="value">"eyelid"</span><span class="attribute">&gt;</span><span class="attribute">&lt;/div&gt;</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="attribute">&lt;/div&gt;</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="attribute">&lt;/div&gt;</span><br>
+            <span class="attribute">&lt;/div&gt;</span><br>
+        </code>
+        <code class="content disable" id="code-css">
+            <span class="tag">#eye</span>&nbsp;{<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="attribute">position</span>:&nbsp;<span class="value">relative</span>;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="attribute">display</span>:&nbsp;<span class="value">flex</span>;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="attribute">align-items</span>:&nbsp;<span class="value">center</span>;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="attribute">justify-content</span>:&nbsp;<span class="value">center</span>;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="attribute">margin</span>:&nbsp;<span class="value">50px auto</span>;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="attribute">width</span>:&nbsp;<span class="value">300px</span>;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="attribute">height</span>:&nbsp;<span class="value">200px</span>;<br>
+            }<br>
+            <br>
+            <span class="tag">#iris</span>&nbsp;{<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="attribute">position</span>:&nbsp;<span class="value">absolute</span>;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="attribute">width</span>:&nbsp;<span class="value">60px</span>;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="attribute">height</span>:&nbsp;<span class="value">60px</span>;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="attribute">background-color</span>:&nbsp;<span class="value">#000</span>;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="attribute">border-radius</span>:&nbsp;<span class="value">50%</span>;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="attribute">border</span>:&nbsp;<span class="value">solid 40px #ff00ca</span>;<br>
+            }<br>
+            <br>
+            <span class="tag">#eyelid</span>&nbsp;{<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="attribute">position</span>:&nbsp;<span class="value">absolute</span>;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="attribute">width</span>:&nbsp;<span class="value">200px</span>;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="attribute">height</span>:&nbsp;<span class="value">200px</span>;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="attribute">border-radius</span>:&nbsp;<span class="value">70% 1%</span>;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="attribute">border</span>:&nbsp;<span class="value">solid 26px #000</span>;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="attribute">transform</span>:&nbsp;<span class="value">rotate(45deg)</span>;<br>
+            }<br>
+        </code>
+        <code class="content disable" id="code-js">
+            <span class="attribute">const</span>&nbsp;<span class="name">eye</span>&nbsp;=&nbsp;{&nbsp;<span class="name">x</span>:&nbsp;<span class="tag">0</span><span class="attribute">,</span>&nbsp;<span class="name">y</span>:&nbsp;<span class="tag">0</span>&nbsp;}<br>
+            <span class="attribute">const</span>&nbsp;<span class="name">ellipse</span>&nbsp;=&nbsp;{&nbsp;<span class="name">a</span>:&nbsp;<span class="tag">70</span><span class="attribute">,</span>&nbsp;<span class="name">b</span>:&nbsp;<span class="tag">30</span>&nbsp;}<br>
+            <span class="attribute">const</span>&nbsp;<span class="name">line</span>&nbsp;=&nbsp;{&nbsp;<span class="name">k</span>:&nbsp;<span class="tag">0</span>&nbsp;}<br>
+            <br>
+            <span class="name">document</span>.<span class="method">addEventListener</span>(<span class="value">'mousemove'</span><span class="attribute">,</span>&nbsp;(mouse:&nbsp;MouseEvent)&nbsp;=>&nbsp;{<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="attribute">const</span>&nbsp;element&nbsp;=&nbsp;<span class="name">document</span>.<span class="method">getElementById</span>(<span class="value">'eye'</span>)<span class="attribute">;</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="attribute">const</span>&nbsp;iris&nbsp;=&nbsp;<span class="name">document</span>.<span class="method">getElementById</span>(<span class="value">'iris'</span>)<span class="attribute">;</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="attribute">const</span>&nbsp;x0&nbsp;=&nbsp;mouse.<span class="name">clientX</span>&nbsp;-&nbsp;element.<span class="name">offsetLeft</span>&nbsp;-&nbsp;(element.<span class="name">offsetWidth</span>&nbsp;/&nbsp;<span class="tag">2</span>)&nbsp;+&nbsp;<span class="name">window</span>.<span class="name">scrollX</span><span class="attribute">;</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="attribute">const</span>&nbsp;y0&nbsp;=&nbsp;mouse.<span class="name">clientY</span>&nbsp;-&nbsp;element.<span class="name">offsetTop</span>&nbsp;-&nbsp;(element.<span class="name">offsetHeight</span>&nbsp;/&nbsp;<span class="tag">2</span>)&nbsp;+&nbsp;<span class="name">window</span>.<span class="name">scrollY</span><span class="attribute">;</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="method">eyePosition</span>(x0<span class="attribute">,</span>&nbsp;y0)<span class="attribute">;</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;iris.<span class="name">style</span>.<span class="name">top</span>&nbsp;=&nbsp;(<span class="name">eye</span>.<span class="name">y</span>&nbsp;+&nbsp;<span class="tag">30</span>)&nbsp;+&nbsp;<span class="value">'px'</span><span class="attribute">;</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;iris.<span class="name">style</span>.<span class="name">left</span>&nbsp;=&nbsp;(<span class="name">eye</span>.<span class="name">x</span>&nbsp;+&nbsp;<span class="tag">80</span>)&nbsp;+&nbsp;<span class="value">'px'</span><span class="attribute">;</span><br>
+            })<span class="attribute">;</span><br>
+            <br>
+            <span class="attribute">function</span>&nbsp;<span class="method">eyePosition</span>(x0<span class="attribute">,</span>&nbsp;y0)&nbsp;{<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Calculate the position of the eye</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="attribute">if</span>&nbsp;(x0&nbsp;===&nbsp;<span class="tag">0</span>)&nbsp;{<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="attribute">if</span>&nbsp;(y0&nbsp;>&nbsp;<span class="tag">0</span>)&nbsp;{<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="name">eye</span>.<span class="name">x</span>&nbsp;=&nbsp;<span class="tag">0</span><span class="attribute">;</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="name">eye</span>.<span class="name">y</span>&nbsp;=&nbsp;<span class="name">ellipse</span>.<span class="name">b</span><span class="attribute">;</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<span class="attribute">else</span>&nbsp;{<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="name">eye</span>.<span class="name">x</span>&nbsp;=&nbsp;<span class="tag">0</span><span class="attribute">;</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="name">eye</span>.<span class="name">y</span>&nbsp;=&nbsp;-&nbsp;<span class="name">ellipse</span>.<span class="name">b</span><span class="attribute">;</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<span class="attribute">else</span>&nbsp;{<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="name">line</span>.<span class="name">k</span>&nbsp;=&nbsp;(y0&nbsp;/x0)<span class="attribute">;</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="attribute">if</span>&nbsp;(x0&nbsp;>&nbsp;<span class="tag">0</span>)&nbsp;{<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="name">eye</span>.<span class="name">x</span>&nbsp;=&nbsp;(<span class="name">ellipse</span>.<span class="name">a</span>&nbsp;*&nbsp;<span class="name">ellipse</span>.<span class="name">b</span>)&nbsp;/&nbsp;<wbr><span class="name">Math</span>.<span class="method">sqrt</span>(<span class="name">Math</span>.<span class="method">pow</span>(<span class="name">ellipse</span>.<span class="name">b</span><span class="attribute">,</span>&nbsp;<span class="tag">2</span>)&nbsp;+&nbsp;<wbr>(<span class="name">Math</span>.<span class="method">pow</span>(<span class="name">ellipse</span>.<span class="name">a</span><span class="attribute">,</span>&nbsp;<span class="tag">2</span>)&nbsp;*&nbsp;<span class="name">Math</span>.<span class="method">pow</span>(<span class="name">line</span>.<span class="name">k</span><span class="attribute">,</span>&nbsp;<span class="tag">2</span>)))<span class="attribute">;</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="name">eye</span>.<span class="name">y</span>&nbsp;=&nbsp;(<span class="name">line</span>.<span class="name">k</span>&nbsp;*&nbsp;<span class="name">eye</span>.<span class="name">x</span>)<span class="attribute">;</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<span class="attribute">else</span>&nbsp;{<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="name">eye</span>.<span class="name">x</span>&nbsp;=&nbsp;-&nbsp;(<span class="name">ellipse</span>.<span class="name">a</span>&nbsp;*&nbsp;<span class="name">ellipse</span>.<span class="name">b</span>)&nbsp;/&nbsp;<wbr><span class="name">Math</span>.<span class="method">sqrt</span>(<span class="name">Math</span>.<span class="method">pow</span>(<span class="name">ellipse</span>.<span class="name">b</span><span class="attribute">,</span>&nbsp;<span class="tag">2</span>)&nbsp;+&nbsp;<wbr>(<span class="name">Math</span>.<span class="method">pow</span>(<span class="name">ellipse</span>.<span class="name">a</span><span class="attribute">,</span>&nbsp;<span class="tag">2</span>)&nbsp;*&nbsp;<span class="name">Math</span>.<span class="method">pow</span>(<span class="name">line</span>.<span class="name">k</span><span class="attribute">,</span>&nbsp;<span class="tag">2</span>)))<span class="attribute">;</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="name">eye</span>.<span class="name">y</span>&nbsp;=&nbsp;(<span class="name">line</span>.<span class="name">k</span>&nbsp;*&nbsp;<span class="name">eye</span>.<span class="name">x</span>)<span class="attribute">;</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Check x0, y0 in the eye</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="attribute">if</span>&nbsp;(<span class="name">Math</span>.<span class="method">abs</span>(x0)&nbsp;<=&nbsp;<span class="name">Math</span>.<span class="method">abs</span>(<span class="name">eye</span>.<span class="name">x</span>)&nbsp;&&&nbsp;<wbr><span class="name">Math</span>.<span class="method">abs</span>(y0)&nbsp;<=&nbsp;<span class="name">Math</span>.<span class="method">abs</span>(<span class="name">eye</span>.<span class="name">y</span>))&nbsp;{<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="name">eye</span>.<span class="name">x</span>&nbsp;=&nbsp;x0<span class="attribute">;</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="name">eye</span>.<span class="name">y</span>&nbsp;=&nbsp;y0<span class="attribute">;</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+            }<br>
+        </code>
+    </div>
+</div>
+</body>
+</html>

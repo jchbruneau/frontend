@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barres de progression</title>
+    <link rel="stylesheet" href="main.css">
+    <script type="text/javascript" src="main.js"></script>
+</head>
+<body>
+<div class="container">
+    <!-- Button timer -->
+    <button class="button" id="but1" onclick="resetTimer(this.id)">
+        <div class="timer" id="tim-but1"></div>
+        <div class="text" id="txt-but1">Click me</div>
+    </button>
+    <!-- Button toggle -->
+    <button class="toggle" id="tog1" onclick="updateSwitch(this.id)">
+        <div class="switch off" id="swt-tog1"></div>
+        <div class="text off" id="txt-tog1">Off</div>
+    </button>
+    <!-- Progress bar -->
+    <div class="horizontal-bar" id="bar1">
+        <div class="progress" id="prg-bar1"></div>
+        <div class="text" id="txt-bar1">0%</div>
+    </div>
+    <!-- Animated bar -->
+    <div class="horizontal-bar" id="bar2">
+        <div class="progress" id="lft-bar2"></div>
+        <div class="progress" id="rht-bar2"></div>
+    </div>
+</div>
+<div class="popup">
+    <!-- Popup dialog -->
+    <button class="popup-box" id="pop1" onclick="closePopup(this.id)">
+        <div class="timer" id="tim-pop1"></div>
+        <div class="message" id="msg-pop1">Salutations, à toutes et à tous !</div>
+    </button>
+    <button class="popup-box" id="pop2" onclick="closePopup(this.id)">
+        <div class="timer" id="tim-pop2"></div>
+        <div class="message" id="msg-pop2">Popup bis</div>
+    </button>
+</div>
+</body>
+</html>

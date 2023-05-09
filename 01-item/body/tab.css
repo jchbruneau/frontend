@@ -1,0 +1,150 @@
+* {
+    margin: 0;
+    padding: 0;
+    --debug-white: white;
+    --debug-black: black;
+    --debug-blue: blue;
+    --debug-green: green;
+    --debug-orange: orange;
+    --debug-red: red;
+    --color-html: #e34e26;
+    --color-css: #35a9db;
+    --color-js: #ffc90e;
+}
+
+body {
+    margin: 40px 0;
+    background-color: #f5f5f5;
+    font-family: sans-serif;
+}
+
+.disable {
+    display: none;
+}
+
+/* CONTAINER */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* BOX */
+.box {
+    margin: 30px;
+    padding: 30px;
+    width: 70vw;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px #00000019;
+    text-align: center;
+}
+
+/* TABS */
+.tabs {
+    display: inline-flex;
+    float: left;
+    padding-right: 60px;
+    background-color: #808080;
+    border-radius: 5px 5px 0px 0px;
+    width: 70vw;
+}
+
+.tab {
+    padding: 5px 20px 3px 20px;
+    background-color: #808080;
+    border-style: none;
+    border-radius: 5px 5px 0px 0px;
+    color: #f8f8f8;
+    font-weight : bold;
+}
+
+.tab.active#tab-html {
+    background-color: var(--color-html);
+}
+
+.tab.active#tab-css {
+    background-color: var(--color-css);
+}
+
+.tab.active#tab-js {
+    background-color: var(--color-js);
+}
+
+.tab:hover {
+    border-radius: 5px 5px 0px 0px;
+    color: #f8f8f8;
+}
+
+#tab-html:hover {
+    background-color: var(--color-html);
+}
+
+#tab-css:hover {
+    background-color: var(--color-css);
+}
+
+#tab-js:hover {
+    background-color: var(--color-js);
+}
+
+/* SEPARATOR */
+.separator.horizontal {
+    padding: 3px 30px 0px 30px;
+    width: 70vw;
+}
+
+.separator.horizontal#separator-html {
+    background-color: var(--color-html);
+}
+
+.separator.horizontal#separator-css {
+    background-color: var(--color-css);
+}
+
+.separator.horizontal#separator-js {
+    background-color: var(--color-js);
+}
+
+/* CODE BOX */
+.code-box {
+    margin: 0 30px;
+    padding: 30px;
+    width: 70vw;
+    background-color: #1e1e1e;
+    box-shadow: 0 2px 4px #00000019;
+    border-radius: 0px 0px 5px 5px;
+}
+
+.code-box code {
+    text-align: left;
+    color: #f8f8f8;
+    font-family: monospace;
+    font-size: 14px;
+}
+
+.code-box span.name {
+    color: #9370db;
+}
+
+.code-box span.tag {
+    color: #87cefa;
+}
+
+.code-box span.attribute {
+    color: #ffA500;
+}
+
+.code-box span.method {
+    color: #ffc90e;
+}
+
+.code-box span.value {
+    color: #009000;
+}
+
+.code-box span.comment {
+    color: #808080;
+    font-style: italic;
+}

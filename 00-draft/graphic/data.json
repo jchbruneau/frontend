@@ -1,0 +1,32 @@
+{
+  "graphics": [
+    {
+      "type": "bar",
+      "title": "Titre1",
+      "data": [
+        {
+          "label": "label1",
+          "value": 100
+        },
+        {
+          "label": "label2",
+          "value": 200
+        }
+      ]
+    },
+    {
+      "type": "point",
+      "title": "Titre2",
+      "data": [
+        {
+          "x": 100,
+          "y": 0
+        },
+        {
+          "x": 200,
+          "y": 1
+        }
+      ]
+    }
+  ]
+}

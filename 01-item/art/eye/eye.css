@@ -1,0 +1,30 @@
+@import "../../body/tab.css";
+
+/* EYE */
+#eye {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 50px auto;
+    width: 300px;
+    height: 200px;
+}
+
+#iris {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background-color: #000;
+    border-radius: 50%;
+    border: solid 40px #ff00ca;
+}
+
+#eyelid {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 70% 1%;
+    border: solid 26px #000;
+    transform: rotate(45deg);
+}
