@@ -1,12 +1,6 @@
 * {
     margin: 0;
     padding: 0;
-    --debug-white: white;
-    --debug-black: black;
-    --debug-blue: blue;
-    --debug-green: green;
-    --debug-orange: orange;
-    --debug-red: red;
     --color-html: #e34e26;
     --color-css: #35a9db;
     --color-js: #ffc90e;
