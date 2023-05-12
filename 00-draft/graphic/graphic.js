@@ -1,7 +1,6 @@
 const file = 'data.json';
-
-let id = 0;
 let objects = new Array();
+let id = 0;
 
 window.addEventListener('DOMContentLoaded', (event) => {
     fetch(file)
@@ -59,7 +58,7 @@ function fixValues(object) {
 function displayGraphic(H, V) {
     let code = '';
     const graphic = objects[id-1];
-    //code += '<div class="box">\n';
+    code += '<div class="sub-box">\n';
     code += '<div class="title">' + graphic.title + '</div>\n';
     code += '<div class="graphic" id="grph' + id + '">\n';
     code += '<!-- Graphic -->\n';
@@ -70,17 +69,18 @@ function displayGraphic(H, V) {
         code += displayPoint();
     }
     code += '<!-- Pointer -->\n';
-    code += '<g class="disable" id="pntr' + id + '" stroke="red" stroke-width="0.5">\n';
-    code += '<!-- Horizontal lines -->\n';
-    code += '<line id="hz-pntr' + id + '" x1="0%" y1="0%" x2="100%" y2="0%"/>\n';
-    code += '<!-- Vertical lines -->\n';
-    code += '<line id="vt-pntr' + id + '" x1="0%" y1="0%" x2="0%" y2="100%"/>\n';
+    code += '<g class="disable" id="pntr' + id + '">\n';
+    code += '<!-- Horizontal line -->\n';
+    code += '<line id="hz-pntr' + id + '" x1="0%" y1="0%" x2="100%" y2="0%" stroke="red" stroke-width="0.5"/>\n';
+    code += '<!-- Vertical line -->\n';
+    code += '<line id="vt-pntr' + id + '" x1="0%" y1="0%" x2="0%" y2="100%" stroke="red" stroke-width="0.5"/>\n';
     code += '<!-- Text values -->\n';
-    code += '<text id="val-pntr' + id + '" x="1%" y="97%" fill="red" font-size="10px">{0, 0}</text>\n';
+    code += '<rect x="0.5%" y="93.5%" width="10%" height="5%" fill="#ffffffb3"/>\n';
+    code += '<text id="val-pntr' + id + '" x="1%" y="97%" fill="red" font-size="10px"></text>\n';
     code += '</g>';
     code += '</svg>\n';
     code += '</div>\n';
-    //code += '</div>\n';
+    code += '</div>\n';
     return code;
 }
 
@@ -215,7 +215,7 @@ function displayPoint() {
     
     code += '<!-- Data -->\n';
     code += '<g stroke="blue" stroke-width="2" fill="white">\n';
-    code += '<!-- Lines & Points -->\n';
+    code += '<!-- Lines -->\n';
     for (let i = 0; i < graphic.data.length; i++) {
         if (i === 0) {
             if (graphic.data[i].x > 0) {
@@ -240,13 +240,23 @@ function displayPoint() {
                 y2 = 100 - (100 * (graphic.data[i].y - graphic.min.y) / graphic.length.y);
             }
             code += '<line x1="' + x1 + '%" y1="' + y1 + '%" x2="' + x2 + '%" y2="' + y2 + '%"/>\n';
-            if (i === 1) {
-                code += '<circle cx="' + x1 + '%" cy="' + y1 + '%" r="6"/>\n';
-            }
-            code += '<circle cx="' + x2 + '%" cy="' + y2 + '%" r="6"/>\n';
             x1 = x2;
             y1 = y2;
         }
+    }
+    code += '<!-- Points -->\n';
+    for (let i = 0; i < graphic.data.length; i++) {
+        if (graphic.data[i].x > 0) {
+            x1 = 100 * (graphic.length.x - graphic.max.x + graphic.data[i].x) / graphic.length.x;
+        } else {
+            x1 = 100 * (graphic.data[i].x - graphic.min.x) / graphic.length.x;
+        }
+        if (graphic.data[i].y > 0) {
+            y1 = 100 - (100 * (graphic.length.y - graphic.max.y + graphic.data[i].y) / graphic.length.y);
+        } else {
+            y1 = 100 - (100 * (graphic.data[i].y - graphic.min.y) / graphic.length.y);
+        }
+        code += '<circle cx="' + x1 + '%" cy="' + y1 + '%" r="6"/>\n';
     }
     code += '</g>';
     return code;
@@ -271,14 +281,14 @@ function pointer(mouseX, mouseY) {
     let x0 = mouseX - graph.offsetLeft - (0.02 * graph.offsetWidth) + window.scrollX;
     let y0 = mouseY - graph.offsetTop - (0.02 * graph.offsetWidth) + window.scrollY;
     if (x0 > 0 && x0 < (0.96 * graph.offsetWidth) && y0 > 0 && y0 < 300) {
-        pointer.classList.remove('disable');
-        pointerH.outerHTML = '<line id="hz-pntr' + id + '" x1="0%" y1="' + (y0 / 300) * 100 + '%" x2="100%" y2="' + (y0 / 300) * 100 + '%"/>';
-        pointerV.outerHTML = '<line id="vt-pntr' + id + '" x1="' + (x0 / (0.96 * graph.offsetWidth)) * 100 + '%" y1="0%" x2="' + (x0 / (0.96 * graph.offsetWidth)) * 100 + '%" y2="100%"/>';
+        pointerH.outerHTML = '<line id="hz-pntr' + id + '" x1="0%" y1="' + (y0 / 300) * 100 + '%" x2="100%" y2="' + (y0 / 300) * 100 + '%" stroke="red" stroke-width="0.5"/>';
+        pointerV.outerHTML = '<line id="vt-pntr' + id + '" x1="' + (x0 / (0.96 * graph.offsetWidth)) * 100 + '%" y1="0%" x2="' + (x0 / (0.96 * graph.offsetWidth)) * 100 + '%" y2="100%" stroke="red" stroke-width="0.5"/>';
         if (graphic.type === 'histogram') {
-            text.innerHTML = '{' + Math.round(graphic.min.x + (graphic.length.x * x0) / (0.96 * graph.offsetWidth)) + ', ' + (Math.round((graphic.max.y - (graphic.length.y * y0 / 300)) *roundValue) / roundValue) + '}';
+            text.innerHTML = '{ ' + Math.round(graphic.min.x + (graphic.length.x * x0) / (0.96 * graph.offsetWidth)) + ', ' + (Math.round((graphic.max.y - (graphic.length.y * y0 / 300)) *roundValue) / roundValue) + ' }';
         } else {
-            text.innerHTML = '{' + (Math.round((graphic.min.x + (graphic.length.x * x0) / (0.96 * graph.offsetWidth)) * roundValue) / roundValue) + ', ' + (Math.round((graphic.max.y - (graphic.length.y * y0 / 300)) *roundValue) / roundValue) + '}';
+            text.innerHTML = '{ ' + (Math.round((graphic.min.x + (graphic.length.x * x0) / (0.96 * graph.offsetWidth)) * roundValue) / roundValue) + ', ' + (Math.round((graphic.max.y - (graphic.length.y * y0 / 300)) *roundValue) / roundValue) + ' }';
         }
+        pointer.classList.remove('disable');
     } else if (! pointer.classList.contains('disable')) {
         pointer.classList.add('disable');
     }
