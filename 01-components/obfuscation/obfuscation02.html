@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>Obfuscation JS</title>
+    <script type="text/javascript">
+        /* <![CDATA[ */
+        pass = unescape("unescape%28%22String.fromCharCode%2528104%252C68%252C117%252C102%252C106%252C100%252C107%252C105%252C49%252C53%252C54%2529%22%29");
+        console.log(eval(eval(pass)));
+        h = window.prompt('Entrez le mot de passe / Enter password');
+        if(h == unescape(pass)) {
+            alert('Password accepté, vous pouvez valider le challenge avec ce mot de passe.\nYou an validate the challenge using this pass.');
+        } else {
+            alert('Mauvais mot de passe / wrong password');
+        }
+        /* ]]> */
+    </script>
+</head>
+<body>
+</body>
+</html>

@@ -15,7 +15,7 @@ function loadObject(json) {
     for (let i = 0; i < json.graphics.length; i++) {
         id = i+1;
         addObject(json.graphics[i]);
-        code += displayGraphic(10, 5);
+        code += displayGraphic();
     }
     box.innerHTML = code;
 }
@@ -55,7 +55,7 @@ function fixValues(object) {
     }
 }
 
-function displayGraphic(H, V) {
+function displayGraphic() {
     let code = '';
     const graphic = objects[id-1];
     code += '<div class="sub-box">\n';

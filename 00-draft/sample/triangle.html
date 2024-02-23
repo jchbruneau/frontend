@@ -3,19 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Title</title>
+    <title>Waiting animation</title>
 </head>
 <body>
 <div class="container">
-    <!-- Triangle -->
-    <svg width="110" height="96.6025" transform="rotate(-90)">
-        <path d="M 5 5 L 105 5 L 55 91.6025 Z" fill="none" stroke="#dddddd"/>
-        <path d="M 5 5 L 105 5 L 55 91.6025 Z" fill="none" stroke="#4caf50" stroke-width="4"/>
-    </svg>
-    <!-- Losange -->
-    <svg width="110" height="183.205">
-        <path d="M 55 5 L 105 91.6025 L 55 178.205 L 5 91.6025 Z" fill="none" stroke="#dddddd"/>
-        <path d="M 55 5 L 105 91.6025 L 55 178.205 L 5 91.6025 Z" fill="none" stroke="#4caf50" stroke-width="4"/>
+    <!-- Triangle b = 100, h = 86.6025, c = {28.8675, 57.735} -->
+    <svg width="300" height="300">
+        <circle cx="50%" cy="50%" r="57.735" fill="none" stroke="#ff00ca"/>
+        <path d="M 100 121.1325 L 200 121.1325 L 150 207.735 Z" fill="none" stroke="#dddddd"/>
+        <circle r="5" fill="#ff00ca">
+            <animateMotion
+                    dur="2s"
+                    repeatCount="indefinite"
+                    path="M 200 121.1325 L 150 207.735 L 100 121.1325 Z"/>
+        </circle>
+        <animateTransform
+                attributeName="transform"
+                attributeType="XML"
+                type="rotate"
+                from="-90"
+                to="270"
+                dur="60s"
+                repeatCount="indefinite" />
     </svg>
 </div>
 </body>
